@@ -127,6 +127,8 @@ img {
   // we can remove margin from ruleset
   // below and use gap istead
   gap:1.5em;
+  transform: translateY(35%);
+  // transition: transform 250ms ease, opacity 150ms;
 
   .streaming-info {
     // margin: 1em 0;
@@ -189,6 +191,10 @@ img {
   }
   .back {
     opacity:1;
+    // Only transition on mosue on top
+    // Do no transition on mouse out
+    transition: transform 250ms ease, opacity 150ms;
+    transform: translateY(0);
 
     .streamers {
       width: 100%;
