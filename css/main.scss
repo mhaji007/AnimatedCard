@@ -64,6 +64,7 @@ img {
 }
 
 .front {
+  transition: 250ms;
   .thumbnail {
     border-radius: var(--br);
   }
@@ -96,4 +97,62 @@ img {
 
 .back {
   display: none;
+}
+
+.background {
+  background: #234;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  transform: scale(.2, .9);
+  opacity: 0;
+
+  border-radius: var(--br);
+
+}
+
+
+.game:hover {
+  .front {
+    transform: translateY(-30%) scale(.8);
+  }
+
+  .name {
+    animation: gameName 250ms forwards;
+  }
+  .stats {
+    opacity:0;
+  }
+  // The transition is only applied
+  // to the background on the hover state
+  .background {
+    transition:
+     transform 200ms cubic-bezier(.21, 1.00, .81, 1.00),
+     opacity 100ms linear;
+    opacity: 1;
+    transform: scale(1.4, 1.2);
+  }
+}
+
+@keyframes gameName {
+  0% {
+    text-align: left;
+    opacity:1;
+  }
+  20% {
+    text-align: left;
+    opacity:0;
+  }
+  50% {
+    text-align: center;
+    opacity: 0;
+  }
+  100%{
+    text-align: center;
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }

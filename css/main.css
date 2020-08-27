@@ -64,6 +64,11 @@ img {
   border-radius: 50%;
 }
 
+.front {
+  -webkit-transition: 250ms;
+  transition: 250ms;
+}
+
 .front .thumbnail {
   border-radius: var(--br);
 }
@@ -101,5 +106,85 @@ img {
 
 .back {
   display: none;
+}
+
+.background {
+  background: #234;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  -webkit-transform: scale(0.2, 0.9);
+          transform: scale(0.2, 0.9);
+  opacity: 0;
+  border-radius: var(--br);
+}
+
+.game:hover .front {
+  -webkit-transform: translateY(-30%) scale(0.8);
+          transform: translateY(-30%) scale(0.8);
+}
+
+.game:hover .name {
+  -webkit-animation: gameName 250ms forwards;
+          animation: gameName 250ms forwards;
+}
+
+.game:hover .stats {
+  opacity: 0;
+}
+
+.game:hover .background {
+  -webkit-transition: opacity 100ms linear, -webkit-transform 200ms cubic-bezier(0.21, 1, 0.81, 1);
+  transition: opacity 100ms linear, -webkit-transform 200ms cubic-bezier(0.21, 1, 0.81, 1);
+  transition: transform 200ms cubic-bezier(0.21, 1, 0.81, 1), opacity 100ms linear;
+  transition: transform 200ms cubic-bezier(0.21, 1, 0.81, 1), opacity 100ms linear, -webkit-transform 200ms cubic-bezier(0.21, 1, 0.81, 1);
+  opacity: 1;
+  -webkit-transform: scale(1.4, 1.2);
+          transform: scale(1.4, 1.2);
+}
+
+@-webkit-keyframes gameName {
+  0% {
+    text-align: left;
+    opacity: 1;
+  }
+  20% {
+    text-align: left;
+    opacity: 0;
+  }
+  50% {
+    text-align: center;
+    opacity: 0;
+  }
+  100% {
+    text-align: center;
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+@keyframes gameName {
+  0% {
+    text-align: left;
+    opacity: 1;
+  }
+  20% {
+    text-align: left;
+    opacity: 0;
+  }
+  50% {
+    text-align: center;
+    opacity: 0;
+  }
+  100% {
+    text-align: center;
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
 }
 /*# sourceMappingURL=main.css.map */
