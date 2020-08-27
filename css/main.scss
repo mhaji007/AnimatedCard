@@ -9,7 +9,7 @@
   --clr-light: #fff;
   --clr-accent: rgb(222, 52, 0);
   --clr-accent-dark: rgb(163, 38, 0);
-  --clr-secondary: rgb(0, 62, 163);
+  --clr-secondary: rgb(0, 76, 199);
 
   --br: .5em;
   --transition: transform 200ms cubic-bezier(.21, 1.00, .81, 1.00)
@@ -35,9 +35,33 @@ img {
   max-width: 100%;
 }
 
+.btn {
+  cursor: pointer;
+  border:0;
+  background: var(--clr-secondary);
+  // round corners
+  border-radius: 100vw;
+  color: var(--clr-light);
+  font-weight: bold;
+  padding: .5em 1.5em;
+
+
+}
+
 .game {
   position: relative;
   width: 12.5em;
+  cursor: pointer;
+}
+
+.streamers {
+  display:flex;
+  text-align: center;
+  img {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+  }
 }
 
 .rank {
@@ -54,14 +78,6 @@ img {
 }
 
 
-.streamers {
-  display:flex;
-  img {
-    width: 2em;
-    height: 2em;
-    border-radius: 50%;
-  }
-}
 
 .front {
   transition: 250ms;
@@ -96,11 +112,43 @@ img {
 }
 
 .back {
-  display: none;
+  opacity: 0;
+  // so that the background ignor
+  // content in the back and does not stretch
+  position: absolute;
+  //bottom:0;
+  top: 55%;
+  left:0;
+  right:0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // Since we have display: flex here
+  // we can remove margin from ruleset
+  // below and use gap istead
+  gap:1.5em;
+
+  .streaming-info {
+    // margin: 1em 0;
+    columns:2;
+    // Puts a line straight down the middle
+    // Follows whichever column is the longest
+    column-rule: 1px solid rgba(255, 255, 255, .25)
+  }
+  .game-stat {
+    text-align: center;
+    font-size: 1.125rem;
+
+    span {
+      font-size: .85rem;
+      display: block;
+    }
+  }
+
 }
 
 .background {
-  background: #234;
+  background: rgb(40, 46, 54);
   position: absolute;
   top:0;
   bottom: 0;
@@ -117,17 +165,18 @@ img {
 
 .game:hover {
   .rank {
-    transform: translate(150%, -89%);
+    transform: translate(150%, -78%);
   }
   .front {
     transform: translateY(-30%) scale(.8);
-  }
 
-  .name {
-    animation: gameName 250ms forwards;
-  }
-  .stats {
-    opacity:0;
+
+    .name {
+      animation: gameName 250ms forwards;
+    }
+    .stats {
+      opacity:0;
+    }
   }
   // The transition is only applied
   // to the background on the hover state
@@ -136,9 +185,26 @@ img {
      var(--transition)
      opacity 100ms linear;
     opacity: 1;
-    transform: scale(1.4, 1.2);
+    transform: scale(1.35, 1.2) translateY(1.1%);
+  }
+  .back {
+    opacity:1;
+
+    .streamers {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .streamer {
+      font-size: .9rem;
+    }
+
+    .name{
+      font-weight: bold;
+    }
   }
 }
+
 
 @keyframes gameName {
   0% {
